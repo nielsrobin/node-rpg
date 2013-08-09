@@ -1,0 +1,136 @@
+<adminbar active='Acts'></adminbar>
+<div class='container'>
+	<div class='pull-right feature-bar'>
+		<div class='btn-group'>	
+  		<button ng-click='cutsceneFinished()' ng-show="target == 'cutscene'" class="btn btn-danger">End cutscene</button>
+		</div>
+		<div class='btn-group'>
+			<button class="btn btn-default" ng-click="target = 'start'">
+				Start ({{start.x}},{{start.y}})
+			</button>
+			<button class="btn btn-default" ng-click="target = 'end'">
+				End ({{end.x}},{{end.y}})
+			</button>
+			<button data-toggle="button" class="btn btn-default" ng-click="grid()">Grid</button>
+		</div>
+		<div class='btn-group'>
+	    <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Trigger <span class="caret"></span></button>
+	    <ul class="dropdown-menu">
+	      <li><a ng-click="dialogOpen()">Dialog</a></li>
+	      <li><a ng-click="transformation()">Transformation</a></li>
+	      <li><a ng-click="ambush()">Ambush</a></li>
+	      <li><a ng-click="teleport()">Teleport</a></li>
+	      <li><a ng-click="trap()">Trap</a></li>
+	      <li><a ng-click="loot()">Loot</a></li>
+	      <li><a ng-click="cutscene()">Cutscene</a></li>
+	    </ul>
+		</div>
+		<div class='btn-group'>
+			<button class="btn btn-default" ng-click="isActive = 'items'">Items</button>
+			<button class="btn btn-default" ng-click="isActive = 'npcs'">Npcs</button>
+			<button class="btn btn-default" ng-click="isActive = 'tiles'">Tiles</button>
+		</div>
+		<div class='btn-group'>
+			<button ng-click="save()" class="btn btn-primary">{{saveBtn}}</button>
+	    <button ng-click="clear()" class="btn btn-danger">{{clearBtn}}</button>
+	    <button ng-click="back()" class="btn btn-default">Back to Act</button>
+		</div>
+	</div>
+	
+	<h1>{{scene.title}}</h1>
+</div>
+
+<div class='editor-panel'>
+	<div ng-show="isActive == 'items'">
+		<canvas ng-repeat='tile in items' 
+						ng-click='itemsClick($index)' 
+						data-x='{{tile.x}}' 
+						data-y='{{tile.y}}' 
+						data-src='img/{{tile.src}}'
+						width='32'
+						height='32'></canvas>
+	</div>
+	<div ng-show="isActive == 'npcs'">
+		<canvas ng-repeat='tile in npcs' 
+						ng-click='npcsClick($index)' 
+						data-x='{{tile.x}}' 
+						data-y='{{tile.y}}' 
+						data-src='img/{{tile.src}}'
+						width='32'
+						height='32'></canvas>
+	</div>
+	<div ng-show="isActive == 'tiles'">
+		<canvas ng-repeat='tile in tiles' 
+						ng-click='tileClick($index)' 
+						data-x='{{tile.x}}' 
+						data-y='{{tile.y}}' 
+						data-src='img/{{tile.src}}'
+						width='32'
+						height='32'></canvas>
+	</div>
+</div>
+
+<canvas ng-click='click($event)' class='map'></canvas>
+
+
+<div class="modal fade modal-trigger-dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+		  <div class="modal-header">
+		    <h4 class='modal-title'>Dialog</h4>
+		    <p>x: {{cords.x}}, y: {{cords.y}}</p>
+		  </div>
+		  <div class="modal-body">
+		  	<textarea placeholder="Enter text ..." class='textarea-dialog'></textarea>
+		  </div>
+		  <div class="modal-footer">
+		    <button ng-click='dialogCancel()' class="btn btn-default">Cancel</button>
+		    <button ng-click='dialogSave()' class="btn btn-primary">Save</button>
+		  </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade modal-trigger-cutscene">
+  <div class="modal-dialog">
+    <div class="modal-content">
+		  <div class="modal-header">
+		    <h4 class='modal-title'>Cutscene</h4>
+		    <p>x: {{cutsceneMoveNpc.x}}, y: {{cutsceneMoveNpc.y}}</p>
+		  </div>
+		  <div class="modal-body">
+		  	<textarea placeholder="Enter text ..." class='textarea-cutscene'></textarea>
+		  </div>
+		  <div class="modal-footer">
+		    <button ng-click='cutsceneCancel()' class="btn btn-default">Cancel</button>
+		    <button ng-click='cutsceneSave()' class="btn btn-primary">Save</button>
+		  </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade modal-trigger-components">
+  <div class="modal-dialog">
+    <div class="modal-content">
+		  <div class="modal-header">
+		    <h3>Dialog</h3>
+		    <p>x: {{cords.x}}, y: {{cords.y}}</p>
+		  </div>
+		  <div class="modal-body">
+		  	<table class='table table-striped'>
+					<tr ng-repeat='comp in components'>
+						<td>{{comp.title}}</td>
+						<td align='right'><button class='btn btn-default' ng-click="componentAdd('{{comp.RowKey}}')">Add</button></td>
+					</tr>
+		  	</table>
+		  	<input class='form-control' placeholder='wealth' type="text" ng-model="wealth">
+		  </div>
+		  <div class="modal-footer">
+		    <button ng-click='componentsCancel()' class="btn btn-default">Cancel</button>
+		    <button ng-click='componentsSave()' class="btn btn-primary">Save</button>
+		  </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="alert alert-info alert-editor-info" ng-show="info != ''">{{info}}</div>

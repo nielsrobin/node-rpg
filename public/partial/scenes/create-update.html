@@ -1,0 +1,39 @@
+<adminbar active='Acts'></adminbar>
+<div class='container'>
+  <h2>{{action}} scene</h2>
+
+  <form name="form" class="form-horizontal">
+
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Title</label>
+      <div class="col-lg-10">   
+        <input class="form-control" placeholder='scene.title' type="text" ng-model="scene.title">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Type</label>
+      <div class="col-lg-10">   
+        <select class="form-control" ng-model="scene.type" ng-options="type for type in types">
+          <option value="">-- chose type --</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Previous</label>
+      <div class="col-lg-10">   
+        <select class="form-control" ng-model="prev" ng-options="scene.RowKey as scene.title for scene in scenes" multiple="multiple"></select>
+      </div>
+    </div>
+   
+    <div class="form-group">
+      <div class="col-offset-2 col-lg-10">
+        <button ng-click="save()" class="btn btn-primary">
+          {{action}}
+        </button>
+        <a href="/#/admin/acts/{{actId}}" class="btn btn-default">Cancel</a>
+      </div>
+    </div> 
+  </form>
+</div>

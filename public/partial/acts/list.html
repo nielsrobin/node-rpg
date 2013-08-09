@@ -1,0 +1,21 @@
+<adminbar active='Acts'></adminbar>
+<div class='container'>
+	<h1>Acts</h1>
+
+	<div class="btn-toolbar">
+	  <div class="btn-group">
+	    <a class="btn btn-success" href="/#/admin/acts/create">Create</a>
+	  </div>
+	</div>
+
+	<br />
+
+	<table class='table table-striped'>
+		<tr ng-repeat='act in acts'>
+			<td>{{act.title}}</td>
+			<td width='50'><a class='btn btn-primary' href="/#/admin/acts/{{act.RowKey}}">Read</a></td>
+			<td width='50'><a class='btn btn-default' href="/#/admin/acts/update/{{act.RowKey}}">Update</a></td>
+			<td width='50'><button class='btn btn-danger' ng-click="delete('{{act.RowKey}}')">Delete</button></td>
+		</tr>
+	</table>
+</div>

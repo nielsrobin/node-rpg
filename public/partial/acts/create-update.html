@@ -1,0 +1,24 @@
+<adminbar active='Acts'></adminbar>
+<div class='container'>
+	<h2>{{action}} act</h2>
+
+	<form name="form" class="form-horizontal">
+
+		<div class="form-group">
+	    <label class="col-lg-2 control-label">Title</label>
+	    <div class="col-lg-10">
+  			<input class='form-control' placeholder='act.title' type="text" ng-model="act.title">  			
+	    </div>
+	  </div>
+
+		<div class="form-group">
+	    <div class="col-offset-2 col-lg-10">  			
+		    <button ng-click="save()" class="btn btn-primary">
+		      {{action}}
+		    </button>
+		    <a href="/#/admin/acts" class="btn btn-default">Cancel</a>
+	    </div>
+	  </div>
+	  
+	</form>
+</div>

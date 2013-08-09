@@ -1,0 +1,29 @@
+<adminbar active='Acts'></adminbar>
+<div class='container'>
+	<h1>{{act.title}}</h1>
+
+	<div class="btn-toolbar">
+	  <div class="btn-group">
+			<a class="btn btn-success" href="/#/admin/scenes/create/{{act.RowKey}}">Create</a>
+		</div>
+	</div>
+
+	<br />
+
+	<table class='table table-striped'>
+		<tr ng-repeat='scene in scenes'>
+			<td>{{scene.title}}</td>
+			<td>{{scene.type}}</td>
+			<td width='50'><a class='btn btn-success' href="/#/admin/game/{{scene.type}}/{{scene.PartitionKey}}/{{scene.RowKey}}">Play</a></td>
+			<td width='50'><a class='btn btn-primary' href="/#/admin/scenes/{{scene.type}}/{{scene.PartitionKey}}/{{scene.RowKey}}">Editor</a></td>
+			<td width='50'><a class='btn btn-default' href="/#/admin/scenes/update/{{scene.PartitionKey}}/{{scene.RowKey}}">Update</a></td>
+			<td width='50'><button class='btn btn-danger' ng-click="delete('{{scene.RowKey}}')">Delete</button></td>
+		</tr>
+	</table>
+
+	<div class='row centered'>
+		<div class='span12' ng-repeat='sequence in scenesSequences'>
+			<span ng-repeat='scene in sequence' class="base base-{{scene.type}}">{{scene.title}}</span>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,69 @@
+<adminbar active='{{adminbar}}'></adminbar>
+<div class='container'>
+	<h2>{{action}} tile</h2>
+
+	<form name="form" class="form-horizontal">
+
+
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Title</label>
+      <div class="col-lg-10">  	
+      	<input class='form-control' placeholder='tile.title' type="text" ng-model="tile.title">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Sprite</label>
+      <div class="col-lg-10">  	
+		    <select class='form-control' ng-model="tile.src" ng-options="src for src in srcs">
+		      <option value="">-- chose type --</option>
+		    </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-lg-2 control-label">X-cord</label>
+      <div class="col-lg-10">  	
+      	<input class='form-control' placeholder='tile.x' type="text" ng-model="tile.x">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Y-cord</label>
+      <div class="col-lg-10">  	
+      	<input class='form-control' placeholder='tile.y' type="text" ng-model="tile.y">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Z-cord</label>
+      <div class="col-lg-10">  	
+      	<input class='form-control' placeholder='tile.z' type="text" ng-model="tile.z">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Category</label>
+      <div class="col-lg-10">  	
+      	<input class='form-control' placeholder='tile.category' type="text" ng-model="tile.category">
+
+		  	<div class='checkbox'>
+		  		<input type="checkbox" ng-model="tile.passable"> Passable
+				</div>
+
+				<canvas data-x='{{tile.x}}' 
+								data-y='{{tile.y}}' 
+								data-src='img/{{tile.src}}'></canvas>
+      </div>
+    </div>
+	  
+    <div class="form-group">
+      <div class="col-offset-2 col-lg-10">    
+		    <button ng-click="save()" class="btn btn-primary">
+		      {{action}}
+		    </button>
+		    <a href="/#/admin/{{url}}" class="btn btn-default">Cancel</a>
+    	</div>
+    </div>
+  </form>
+</div>

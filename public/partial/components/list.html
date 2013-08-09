@@ -1,0 +1,21 @@
+<adminbar active='Components'></adminbar>
+<div class='container'>
+	<h1>Components</h1>
+
+	<div class="btn-toolbar">
+	  <div class="btn-group">
+	    <a class="btn btn-success" href="/#/admin/components/equipment/create">Create equipment</a>
+	    <a class="btn btn-success" href="/#/admin/components/consumable/create">Create consumable</a>
+	  </div>
+	</div>
+
+	<br />
+
+	<table class='table table-striped'>
+		<tr ng-repeat='comp in comps'>
+			<td>{{comp.title}}</td>
+			<td width='50'><a class='btn btn-default' href="/#/admin/components/{{comp.category}}/update/{{comp.RowKey}}">Update</a></td>
+			<td width='50'><button class='btn btn-danger' ng-click="delete('{{comp.RowKey}}')">Delete</button></td>
+		</tr>
+	</table>
+</div>

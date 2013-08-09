@@ -1,0 +1,20 @@
+<adminbar active='{{adminbar}}'></adminbar>
+<div class='container'>
+	<h1>Tiles</h1>
+
+	<div class="btn-toolbar">
+	  <div class="btn-group">
+	    <a class="btn btn-success" href="/#/admin/{{url}}/create">Create</a>
+	  </div>
+	</div>
+
+	<br />
+
+	<table class='table table-striped'>
+		<tr ng-repeat='tile in tiles'>
+			<td>{{tile.title}}</td>
+			<td width='50'><a class='btn btn-default' href="/#/admin/{{url}}/update/{{tile.RowKey}}">Update</a></td>
+			<td width='50'><button class='btn btn-danger' ng-click="delete('{{tile.RowKey}}')">Delete</button></td>
+		</tr>
+	</table>
+</div>

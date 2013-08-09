@@ -1,0 +1,33 @@
+<adminbar active='Components'></adminbar>
+<div class='container'>
+	<h2>{{action}} component</h2>
+
+	<form name="form" class="form-horizontal">
+
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Title</label>
+      <div class="col-lg-10">
+        <input class='form-control' placeholder='comp.title' type="text" ng-model="comp.title">    
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Item</label>
+      <div class="col-lg-10">    
+        <select class='form-control' ng-model="comp.item" ng-options="item.title for item in items">
+          <option value="">-- choose type --</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-offset-2 col-lg-10">    
+        <button ng-click="save()" class="btn btn-primary">
+          {{action}}
+        </button>
+        <a href="/#/admin/components" class="btn btn-default">Cancel</a>
+      </div>
+    </div>
+    
+	</form>
+</div>
